@@ -1,0 +1,31 @@
+easynebula:
+  apigw:
+    baseUrl: TBD
+    clientAPIKey: TBD
+  incoming:
+    request:
+      headers: request-id,trace-id
+
+server:
+  port: 9000
+
+spring:
+  application:
+    name: easynebula-oauth2-apigateway-reactive
+  security:
+    oauth2:
+      client:
+        registration:
+          easynebula:
+            client-name: easynebula
+            authorization-grant-type: client_credentials
+            client-id: TBD
+            client-secret: TBD
+        provider:
+          easynebula:
+            token-uri: TBD
+
+  sleuth:
+    baggage:
+      correlation-fields: request-id,trace-id
+      remote-fields: request-id,trace-id
